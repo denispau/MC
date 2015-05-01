@@ -1,0 +1,14 @@
+{# src/MC/EventBundle/Resources/views/Evenement/menu.html.twig #}
+
+{# Ce template n'hérite de personne,
+   tout comme le template inclus avec {{ include() }}. #}
+
+<ul class="nav nav-pills nav-stacked">
+  {% for advert in listAdverts %}
+    <li>
+      <a href="{{ path('mc_event_view', {'id': evenement.id}) }}">
+        {{ evenement.nomEvenement }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>

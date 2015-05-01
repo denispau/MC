@@ -1,0 +1,29 @@
+# src/MC/EventBundle/Resources/config/routing.yml
+
+mc_event_home:
+    path:      /{page}
+    defaults:  { _controller: MCEventBundle:Evenement:index, page: 1 }
+    requirements:
+        page: \d*
+
+mc_event_view:
+    path:      /evenement/{id}
+    defaults:  { _controller: MCEventBundle:Evenement:view }
+    requirements:
+        id: \d+
+
+mc_event_add:
+    path:      /add
+    defaults:  { _controller: MCEventBundle:Evenement:add }
+
+mc_event_edit:
+    path:      /edit/{id}
+    defaults:  { _controller: MCEventBundle:Evenement:edit }
+    requirements:
+        id: \d+
+
+mc_event_delete:
+    path:      /delete/{id}
+    defaults:  { _controller: MCEventBundle:Evenement:delete }
+    requirements:
+        id: \d+

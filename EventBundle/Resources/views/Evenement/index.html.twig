@@ -1,0 +1,25 @@
+{# src/MC/EventBundle/Resources/views/Evenement/index.html.twig #}
+
+{% extends "MCEventBundle::layout.html.twig" %}
+
+{% block title %}
+  Calendrier - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+  <h2>Calendrier</h2>
+  <h5>(Pour l'instant juste des annonces on verra plus tard le calendrier)</h5>
+
+  <ul>
+    {% for advert in listAdverts %}
+    <li>
+      <a href="{{ path('mc_event_view', {'id': evenement.id}) }}">
+        {{ evenement.nomEvenement }}
+      </a>
+	   le {{ evenement.dateDebut }}, organisé par {{evenement.nomOrganisateur}}
+    </li>
+  {% endfor %}
+  </ul>
+
+{% endblock %}

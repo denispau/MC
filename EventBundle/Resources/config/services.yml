@@ -1,0 +1,4 @@
+services:
+#    mc_event.example:
+#        class: MC\EventBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

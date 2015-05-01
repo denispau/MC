@@ -1,0 +1,12 @@
+{# src/MC/EventBundle/Resources/views/layout.html.twig #}
+
+{% extends "::layout.html.twig" %}
+
+{% block menu %}
+  <ul class="nav nav-pills nav-stacked">
+          <li><h3><a href="{{ path('mc_event_add') }}">Ajouter un événement</a><h3></li>
+		  <li><h3>Coming soon :</h3>
+			{{ render(controller("MCEventBundle:Evenement:menu", {'limit': 3})) }}
+		  </li>
+        </ul>
+{% endblock %}

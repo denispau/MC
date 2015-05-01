@@ -1,0 +1,25 @@
+{# src/MC/EventBundle/Resources/views/Evenement/edit.html.twig #}
+
+{% extends "MCEventBundle::layout.html.twig" %}
+
+{% block title %} {{ parent() }} - Modifier {% endblock %}
+
+{% block body %}
+
+  <h2>Modifier un événement</h2>
+
+  {{ include("MCEventBundle:Evenement:form.html.twig") }}
+
+    <p>
+    Vous éditez un événement déjà existant, merci de ne pas changer
+    l'esprit général de l'événement déjà publié.
+  </p>
+
+  <p>
+    <a href="{{ path('mc_event_view', {'id': evenement.id}) }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour à  l'événement
+    </a>
+  </p>
+
+{% endblock %}
