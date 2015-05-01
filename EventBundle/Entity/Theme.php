@@ -13,21 +13,6 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Theme
 {
-    /**
-    * @ORM\ManyToOne(targetEntity="Evenement", mappedBy="theme")
-    */
-    /**
-    * @ORM\ManyToOne(targetEntity="CA", inversedBy="theme")
-    * @ORM\JoinColumn(name="CA_id", referencedColumnName="id")
-    */
-
-    private $evenement;
-    protected $ca;
-
-public function __construct()
-{
-    $this->evenement = new ArrayCollection();
-}
 
     /**
      * @var integer
@@ -79,15 +64,4 @@ public function __construct()
         return $this->theme;
     }
 
-    public function setEvenement(Evenement $evenement =null)
-    {
-        $this->evenement=evenement;
-
-        return $this;
-    }
-
-    public function getEvenement()
-    {
-        return $this->evenement;
-    }
-}
+  }

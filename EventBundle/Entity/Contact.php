@@ -14,17 +14,7 @@ use Symfony\Component\Validator\Constraints as  Assert;
  */
 class Contact
 {
-    /**
-    * @ORM/ManyToOne(targetEntity="CA", mappedBy="contact")
-    * @ORM/JoinColumn(nullable=false)
-    */
-    protected $ca;
-
-public function __construct()
-{
-    $this->ca = new ArrayCollection();
-}
-
+    
     /**
      * @var integer
      *
@@ -38,7 +28,7 @@ public function __construct()
      * @var string
      *
      * @ORM\Column(name="nomContact", type="string", length=255)
-     * @Assert\Length(min=2, message=" Le nom du contact doit faire au moins {{ limit }} caractères.")
+     * @Assert\Length(min=2, minMessage=" Le nom du contact doit faire au moins {{ limit }} caractères.")
      */
     private $nomContact;
 
@@ -46,7 +36,7 @@ public function __construct()
      * @var string
      *
      * @ORM\Column(name="prenomContact", type="string", length=255)
-     * @Assert\Length(min=2, message=" Le prénom du contact doit faire au moins {{ limit }} caractères."))
+     * @Assert\Length(min=2, minMessage=" Le prénom du contact doit faire au moins {{ limit }} caractères."))
      */
     private $prenomContact;
 
@@ -167,17 +157,5 @@ public function __construct()
     public function getNumeroTelephoneContact()
     {
         return $this->numeroTelephoneContact;
-    }
-
-    public function setCA(CA $ca =null)
-    {
-        $this->ca=$ca;
-
-        return $this;
-    }
-
-    public function getCA()
-    {
-        return $this->ca;
     }
 }

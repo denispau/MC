@@ -15,36 +15,7 @@ use Symfony\Component\Validator\Constraints as  Assert;
 class Evenement
 {
 
-  /**
-  * @ORM\ManyToOne(targetEntity="CA", inversedBy="evenement")
-  * @ORM\JoinColumn(name="CA_id", referencedColumnName="id")
-  * @Assert\Valid()
-  */
-
-  /**
-  * @ORM\ManyToOne(targetEntity="Theme", inversedBy="evenement")
-  * @ORM\JoinColumn(name="Theme_id", referencedColumnName="id")
-  */
-
-  /**
-  * @ORM\ManyToOne(targetEntity="Utilisateur", inversedBy="evenement")
-  * @ORM\JoinColumn(name="Utilisateur_id", referencedColumnName="id")
-  */
-
-  /**
-  * @ORM\OneToOne(targetEntity="Image", mappedBy="evenement", @ORM\OneToOne(targetEntity="OC\PlatformBundle\Entity\Image", cascade={"persist"}))
-  */
-
-  protected $ca;
-  protected $theme;
-  protected $utilisateur;
-  private $image;
-
-  public function __construct()
-{
-    $this->image = new ArrayCollection();
-}
-    /**
+      /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -57,7 +28,7 @@ class Evenement
      * @var string
      *
      * @ORM\Column(name="nomEvenement", type="string", length=255)
-     * @Assert\Length(min=2,  message="Le nom de l'événement doit faire au moins {{ limit }} caractères.")
+     * @Assert\Length(min=2,  minMessage="Le nom de l'événement doit faire au moins {{ limit }} caractères.")
      */
     private $nomEvenement;
 
@@ -65,7 +36,7 @@ class Evenement
      * @var string
      *
      * @ORM\Column(name="nomOrganisateur", type="string", length=255)
-     * @Assert\Length(min=2, message="Le nom de l'organisateur doit faire au moins {{ limit }} caractères.")
+     * @Assert\Length(min=2, minMessage="Le nom de l'organisateur doit faire au moins {{ limit }} caractères.")
      */
     private $nomOrganisateur;
 
@@ -278,17 +249,5 @@ class Evenement
     public function getDescriptif()
     {
         return $this->descriptif;
-    }
-
-    public function setImage(Image $image = null)
-    {
-      $this->image = $image;
-
-      return $this;
-    }
-
-    public function getImage()
-    {
-      return $this->image;
     }
 }

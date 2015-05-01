@@ -16,23 +16,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class Utilisateur
 {
- /**
-  * @ORM\ManyToOne(targetEntity="Evenement", mappedBy="utilisateur")
-  */
-
- /**
- * @ORM\ManyToOne(targetEntity="CA", inversedBy="utilisateur")
- * @ORM\JoinColumn(name="CA_id", referencedColumnName="id")
- */
-
-  private $evenement;
-  protected $ca;
-
-public function __construct()
-{
-    $this-> evenement = new ArrayCollection();
-}
-
     /**
      * @var integer
      *
@@ -46,7 +29,7 @@ public function __construct()
      * @var string
      *
      * @ORM\Column(name="nomUtilisateur", type="string", length=255)
-     * @Assert\Length(min=2, message="Le nom de l'utilisateur doit faire au moins {{ limit }} caractères.")
+     * @Assert\Length(min=2, minMessage="Le nom de l'utilisateur doit faire au moins {{ limit }} caractères.")
      */
     private $nomUtilisateur;
 
@@ -54,9 +37,9 @@ public function __construct()
      * @var string
      *
      * @ORM\Column(name="prenomUtilisateur", type="string", length=255)
-     * @Assert\Length(min=2, message="Le prénom de l'utilisateur doit faire au moins {{ limit }} caractères.")
+     * @Assert\Length(min=2, minMessage="Le prénom de l'utilisateur doit faire au moins {{ limit }} caractères.")
      */
-     */
+     
     private $prenomUtilisateur;
 
     /**
@@ -208,15 +191,4 @@ public function __construct()
         return $this->administrateur;
     }
 
-    public function setEvenenement (Evenement $evenement=null)
-    {
-        $this->evenement =$evenement;
-
-        return $this;
-    }
-
-    public function getEvenement()
-    {
-        return $this->evenement;
-    }
-}
+  }

@@ -15,19 +15,6 @@ class Image
 {
 
     /**
-    * @ORM\OneToOne(targetEntity="CA", inversedBy="image", cascade={"persist"})
-    * @ORM\JoinColumn(name="CA_id", referencedColumnName="id")
-    */
-
-    /**
-    * @ORM\OneToOne (targetEntity="Evenement", inversedBy="image", cascade={"persist"})
-    * @ORM\JoinColumn(name="Utilisateur_id", referencedColumnName="id")
-    */
-
-    protected $ca;
-    protected $evenement;
-
-    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -107,4 +94,5 @@ class Image
     {
         return $this->alt;
     }
-}
+
+ }
