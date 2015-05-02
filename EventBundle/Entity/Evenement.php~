@@ -295,7 +295,6 @@ class Evenement
     public function __construct()
     {
         $this->utilisateurs = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->cas = new ArrayCollection();
     }
 
     /**
@@ -329,38 +328,5 @@ class Evenement
     public function getUtilisateurs()
     {
         return $this->utilisateurs;
-    }
-
-    /**
-     * Add cas
-     *
-     * @param \MC\EventBundle\Entity\CA $cas
-     * @return Evenement
-     */
-    public function addCa(\MC\EventBundle\Entity\CA $cas)
-    {
-        $this->cas[] = $cas;
-
-        return $this;
-    }
-
-    /**
-     * Remove cas
-     *
-     * @param \MC\EventBundle\Entity\CA $cas
-     */
-    public function removeCa(\MC\EventBundle\Entity\CA $cas)
-    {
-        $this->cas->removeElement($cas);
-    }
-
-    /**
-     * Get cas
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getCas()
-    {
-        return $this->cas;
     }
 }

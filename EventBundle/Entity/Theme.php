@@ -13,20 +13,23 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Theme
 {
-    /**
-    * @ORM\ManyToOne(targetEntity="Evenement", mappedBy="theme")
-    */
-    /**
-    * @ORM\ManyToOne(targetEntity="CA", inversedBy="theme")
-    * @ORM\JoinColumn(name="CA_id", referencedColumnName="id")
-    */
 
-    private $evenement;
-    protected $ca;
+    /**
+    * @ORM\ManyToMany(targetEntity="CA")
+    */
+    
+    private $cas;
+
+   /**
+   * @ORM\ManyToMany(targetEntity="Evenement")
+   */
+
+   private $evenements;
 
 public function __construct()
 {
-    $this->evenement = new ArrayCollection();
+    $this->cas = new ArrayCollection();
+    $this->evenenements = new ArrayCollection();
 }
 
     /**
@@ -79,15 +82,70 @@ public function __construct()
         return $this->theme;
     }
 
-    public function setEvenement(Evenement $evenement =null)
+  
+    /**
+     * Add cas
+     *
+     * @param \MC\EventBundle\Entity\CA $cas
+     * @return Theme
+     */
+    public function addCa(\MC\EventBundle\Entity\CA $cas)
     {
-        $this->evenement=evenement;
+        $this->cas[] = $cas;
 
         return $this;
     }
 
-    public function getEvenement()
+    /**
+     * Remove cas
+     *
+     * @param \MC\EventBundle\Entity\CA $cas
+     */
+    public function removeCa(\MC\EventBundle\Entity\CA $cas)
     {
-        return $this->evenement;
+        $this->cas->removeElement($cas);
+    }
+
+    /**
+     * Get cas
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCas()
+    {
+        return $this->cas;
+    }
+
+    /**
+     * Add evenements
+     *
+     * @param \MC\EventBundle\Entity\Evenement $evenements
+     * @return Theme
+     */
+    public function addEvenement(\MC\EventBundle\Entity\Evenement $evenements)
+    {
+        $this->evenements[] = $evenements;
+
+        return $this;
+    }
+
+    /**
+     * Remove evenements
+     *
+     * @param \MC\EventBundle\Entity\Evenement $evenements
+     */
+    public function removeEvenement(\MC\EventBundle\Entity\Evenement $evenements)
+    {
+        $this->evenements->removeElement($evenements);
+    }
+
+    /**
+     * Get evenements
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEvenements()
+    {
+        return $this->evenements;
     }
 }

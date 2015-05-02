@@ -16,21 +16,23 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class Utilisateur
 {
- /**
-  * @ORM\ManyToOne(targetEntity="Evenement", mappedBy="utilisateur")
-  */
 
- /**
- * @ORM\ManyToOne(targetEntity="CA", inversedBy="utilisateur")
- * @ORM\JoinColumn(name="CA_id", referencedColumnName="id")
- */
+    /**
+    * @ORM\ManyToMany(targetEntity="Evenement", inversedBy="utilisateurs")
+    */
 
-  private $evenement;
-  protected $ca;
+    private $evenements;
+
+   /**
+   * @ORM\ManyToMany(targetEntity="CA", inversedBy="utilisateurs")
+   */
+
+  private $cas;
 
 public function __construct()
 {
-    $this-> evenement = new ArrayCollection();
+  $this->evenements = new ArrayCollection();
+  $this->cas = new ArrayCollection();
 }
 
     /**
@@ -46,7 +48,7 @@ public function __construct()
      * @var string
      *
      * @ORM\Column(name="nomUtilisateur", type="string", length=255)
-     * @Assert\Length(min=2, message="Le nom de l'utilisateur doit faire au moins {{ limit }} caractères.")
+     * @Assert\Length(min=2, minMessage="Le nom de l'utilisateur doit faire au moins {{ limit }} caractères.")
      */
     private $nomUtilisateur;
 
@@ -54,9 +56,9 @@ public function __construct()
      * @var string
      *
      * @ORM\Column(name="prenomUtilisateur", type="string", length=255)
-     * @Assert\Length(min=2, message="Le prénom de l'utilisateur doit faire au moins {{ limit }} caractères.")
+     * @Assert\Length(min=2, minMessage="Le prénom de l'utilisateur doit faire au moins {{ limit }} caractères.")
      */
-     */
+     
     private $prenomUtilisateur;
 
     /**
@@ -74,14 +76,6 @@ public function __construct()
      * @Assert\NotBlank()
      */
     private $motDePasse;
-
-    /**
-     * @var array
-     *
-     * @ORM\Column(name="Administrateur", type="array")
-     */
-    private $administrateur;
-
 
     /**
      * Get id
@@ -184,39 +178,70 @@ public function __construct()
     {
         return $this->motDePasse;
     }
-
+  
     /**
-     * Set administrateur
+     * Add evenements
      *
-     * @param array $administrateur
+     * @param \MC\EventBundle\Entity\Evenement $evenements
      * @return Utilisateur
      */
-    public function setAdministrateur($administrateur)
+    public function addEvenement(\MC\EventBundle\Entity\Evenement $evenements)
     {
-        $this->administrateur = $administrateur;
+        $this->evenements[] = $evenements;
 
         return $this;
     }
 
     /**
-     * Get administrateur
+     * Remove evenements
      *
-     * @return array 
+     * @param \MC\EventBundle\Entity\Evenement $evenements
      */
-    public function getAdministrateur()
+    public function removeEvenement(\MC\EventBundle\Entity\Evenement $evenements)
     {
-        return $this->administrateur;
+        $this->evenements->removeElement($evenements);
     }
 
-    public function setEvenenement (Evenement $evenement=null)
+    /**
+     * Get evenements
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEvenements()
     {
-        $this->evenement =$evenement;
+        return $this->evenements;
+    }
+
+    /**
+     * Add cas
+     *
+     * @param \MC\EventBundle\Entity\CA $cas
+     * @return Utilisateur
+     */
+    public function addCa(\MC\EventBundle\Entity\CA $cas)
+    {
+        $this->cas[] = $cas;
 
         return $this;
     }
 
-    public function getEvenement()
+    /**
+     * Remove cas
+     *
+     * @param \MC\EventBundle\Entity\CA $cas
+     */
+    public function removeCa(\MC\EventBundle\Entity\CA $cas)
     {
-        return $this->evenement;
+        $this->cas->removeElement($cas);
+    }
+
+    /**
+     * Get cas
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCas()
+    {
+        return $this->cas;
     }
 }
