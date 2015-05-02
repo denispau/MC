@@ -19,6 +19,7 @@ class Evenement
      */
      private $image;
 
+<<<<<<< HEAD
     /**
     * @ORM\ManyToMany(targetEntity="Utilisateur", mappedBy="evenement")
     */ 
@@ -31,6 +32,8 @@ class Evenement
    
     private $cas;
 
+=======
+>>>>>>> origin/master
       /**
      * @var integer
      *
@@ -266,6 +269,7 @@ class Evenement
     {
         return $this->descriptif;
     }
+<<<<<<< HEAD
 
     /**
      * Set image
@@ -364,3 +368,6 @@ class Evenement
         return $this->cas;
     }
 }
+=======
+}
+>>>>>>> origin/master

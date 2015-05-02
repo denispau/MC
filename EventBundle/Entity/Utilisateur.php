@@ -16,6 +16,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class Utilisateur
 {
+<<<<<<< HEAD
 
     /**
     * @ORM\ManyToMany(targetEntity="Evenement", inversedBy="utilisateurs")
@@ -35,6 +36,8 @@ public function __construct()
   $this->cas = new ArrayCollection();
 }
 
+=======
+>>>>>>> origin/master
     /**
      * @var integer
      *
@@ -202,6 +205,7 @@ public function __construct()
         $this->evenements->removeElement($evenements);
     }
 
+<<<<<<< HEAD
     /**
      * Get evenements
      *
@@ -245,3 +249,6 @@ public function __construct()
         return $this->cas;
     }
 }
+=======
+  }
+>>>>>>> origin/master

@@ -13,6 +13,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Theme
 {
+<<<<<<< HEAD
 
     /**
     * @ORM\ManyToMany(targetEntity="CA")
@@ -31,6 +32,8 @@ public function __construct()
     $this->cas = new ArrayCollection();
     $this->evenenements = new ArrayCollection();
 }
+=======
+>>>>>>> origin/master
 
     /**
      * @var integer
@@ -82,6 +85,7 @@ public function __construct()
         return $this->theme;
     }
 
+<<<<<<< HEAD
   
     /**
      * Add cas
@@ -149,3 +153,6 @@ public function __construct()
         return $this->evenements;
     }
 }
+=======
+  }
+>>>>>>> origin/master
