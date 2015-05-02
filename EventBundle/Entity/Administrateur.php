@@ -3,6 +3,8 @@
 namespace MC\EventBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collection\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Administrateur
@@ -32,6 +34,7 @@ class Administrateur
      * @var string
      *
      * @ORM\Column(name="nomAdministrateur", type="string", length=255)
+     * @Assert\Length(min=2, minMessage=" Le nom de l'administrateur doit faire au moins {{ limit}} caractères.")
      */
     private $nomAdministrateur;
 
@@ -39,6 +42,7 @@ class Administrateur
      * @var string
      *
      * @ORM\Column(name="prenomAdministrateur", type="string", length=255)
+     * @Assert\Length(min=2, minMessage=" Le prénom de l'administrateur doit faire au moins {{ limit}} caractères.")
      */
     private $prenomAdministrateur;
 
@@ -46,6 +50,7 @@ class Administrateur
      * @var string
      *
      * @ORM\Column(name="adresseMailAdministrateur", type="string", length=255)
+     * @Assert\Email()
      */
     private $adresseMailAdministrateur;
 
@@ -53,6 +58,7 @@ class Administrateur
      * @var string
      *
      * @ORM\Column(name="motDePasseAdministrateur", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $motDePasseAdministrateur;
 

@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ImageType extends AbstractType
+class AdministrateurType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,7 +15,10 @@ class ImageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('file', 'file')
+            ->add('nomAdministrateur')
+            ->add('prenomAdministrateur')
+            ->add('adresseMailAdministrateur')
+            ->add('motDePasseAdministrateur')
         ;
     }
     
@@ -25,7 +28,7 @@ class ImageType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'MC\EventBundle\Entity\Image'
+            'data_class' => 'MC\EventBundle\Entity\Administrateur'
         ));
     }
 
@@ -34,6 +37,6 @@ class ImageType extends AbstractType
      */
     public function getName()
     {
-        return 'mc_eventbundle_image';
+        return 'mc_eventbundle_administrateur';
     }
 }

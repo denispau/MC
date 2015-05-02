@@ -20,6 +20,7 @@ class CAController extends Controller
     // On vérifie que les valeurs entrées sont correctes
     if ($form->handleRequest($request)->isValid())
     {
+        $ca->getImage()->upload();
         $em = $this->getDoctrine()->getManager();
         $em->persist($ca);
         $em->flush();

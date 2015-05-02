@@ -18,7 +18,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class CA
 {
-<<<<<<< HEAD
+
     /**
     * @ORM\OneToOne(targetEntity="Image", cascade={"persist"})
     */
@@ -59,9 +59,6 @@ public function __construct()
   $this->administrateurs = new ArrayCollection();
 }
 
-=======
-   
->>>>>>> origin/master
     /**
      * @var integer
      *
@@ -75,11 +72,9 @@ public function __construct()
      * @var string
      *
      * @ORM\Column(name="nomCA", type="string", length=255, unique=true)
-<<<<<<< HEAD
      * @Assert\Length(min=2, minMessage="Le nom de l'aasociation ou du club doit faire au moins {{ limit }} caractÃ¨res.")
-=======
      * @Assert\Length(min=2, minMessage="Le nom de l'aasociation ou du club doit faire au moins {{ limit }} caract�res.")
->>>>>>> origin/master
+
      */
 
     private $nomCA;
@@ -147,7 +142,7 @@ public function __construct()
     {
         return $this->descriptifCA;
     }
-<<<<<<< HEAD
+
 
     /**
      * Set image
@@ -304,6 +299,5 @@ public function __construct()
         return $this->administrateurs;
     }
 }
-=======
-}
->>>>>>> origin/master
+
+

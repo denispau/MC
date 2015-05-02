@@ -4,6 +4,7 @@ namespace MC\EventBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as  Assert;
+use symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Image
@@ -37,6 +38,8 @@ class Image
      * @ORM\Column(name="alt", type="string", length=255)
      */
     private $alt;
+
+    private $file;
 
 
     /**
@@ -93,6 +96,38 @@ class Image
     public function getAlt()
     {
         return $this->alt;
+    }
+ 
+    public function getFile()
+    {
+      return $this->file;
+    }
+
+    public function setFile(UploadedFile $file =null)
+    {
+      $this->file = $file;
+    }
+
+    public function upload()
+    {
+    if (null === $this->file){
+     return;
+    }
+
+    $name = $this->file->getClientOriginalName();
+    $this->file->move($this->getUploadRootDir(), $name);
+    $this->url =$name;
+    $this->alt=$name;
+    }
+
+    public function getUploadDir()
+    {
+       return 'uploads/img';
+    }
+
+    protected function getUploadRootDir()
+    {
+      return __DIR__.'/../../../../web/'.$this->getUploadDir();
     }
 
  }

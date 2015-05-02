@@ -70,7 +70,8 @@ class EvenementController extends Controller
    
     // On vérifie que les valeurs entrées sont correctes
     if ($form->handleRequest($request)->isValid())
-    {
+    { 
+        $evenement->getImage()->upload();
         $em = $this->getDoctrine()->getManager();
         $em->persist($evenement);
         $em->flush();
